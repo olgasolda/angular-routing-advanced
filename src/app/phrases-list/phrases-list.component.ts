@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PhraseInterface} from "../shared/phrase.interface";
-import {PHRASES} from "../shared/mock-data";
+import {PhrasesService} from "../shared/phrases.service";
 
 @Component({
   selector: 'app-phrases-list',
@@ -10,8 +10,14 @@ import {PHRASES} from "../shared/mock-data";
 export class PhrasesListComponent implements OnInit {
   phrases!: PhraseInterface[];
 
+  constructor(private phrasesService: PhrasesService) {
+  }
+
   ngOnInit(): void {
-    this.phrases = PHRASES;
-    console.log(this.phrases);
+    this.phrasesService.getAllPhrases()
+      .then(phrases => {
+        this.phrases = phrases;
+        console.log(this.phrases);
+      });
   }
 }
