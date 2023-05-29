@@ -43,9 +43,12 @@ export class PhraseDetailsComponent implements OnInit, OnDestroy {
   }
 
   goToPhrasesList(): void {
-    this.router.navigate(['/phrases', {
-      id: this.phrase.id,
-      param1: 'test'
-    }]).catch(console.log);
+    this.router.navigate(
+      ['../', {
+        id: this.phrase.id,
+        param1: 'test'
+      }],
+      {relativeTo: this.activatedRoute})
+      .catch(console.log);
   }
 }
