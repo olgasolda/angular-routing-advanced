@@ -1,0 +1,9 @@
+<h3>Admin Panel</h3>
+
+<nav>
+  <a [routerLinkActive]="'active'" [routerLink]="['phrases']">Manage Phrases</a>
+  <a [routerLinkActive]="'active'" [routerLink]="['users']">Manage Users</a>
+  <!--  <a [routerLinkActive]="'active'" [routerLink]="['/admin']">Admin</a>-->
+</nav>
+
+<router-outlet></router-outlet>
