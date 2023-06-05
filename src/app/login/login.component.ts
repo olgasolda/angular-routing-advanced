@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../shared/auth.service";
+import {AuthService} from "../shared/services/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   protected readonly AuthService = AuthService;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) {
   }
@@ -24,12 +24,18 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.userLogin, this.userPassword);
-    this.setMessage();
+    this.setMessage('Trying to log in...');
+    this.authService.login(this.userLogin, this.userPassword)
+      .subscribe((res: any) => {
+        console.log(`Login observable result ${res}`);
+        this.setMessage();
+        this.router.navigate([this.authService.redirectUrl || '/home']).catch(console.log);
+      });
   }
 
   logout() {
     this.authService.logout();
+    this.setMessage();
   }
 
   private setMessage(msg: string = '') {
@@ -38,6 +44,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.message = `Logged ${AuthService.isLoggedIn ? 'in' : 'out'}`;
+    this.message = `Logged ${this.authService.isLoggedIn ? 'in' : 'out'}`;
   }
 }

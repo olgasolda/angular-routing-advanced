@@ -1,4 +1,4 @@
-import {Phrase} from "./phrase";
+import {Phrase} from "../classes/phrase";
 
 export const PHRASES = [
   new Phrase(1, 'Hello World', 'English'),
@@ -9,4 +9,4 @@ export const PHRASES = [
   new Phrase(6, 'Ciao Mondo', 'Italian'),
   new Phrase(7, 'Pozdravljen Svet', 'Slovenien'),
   new Phrase(8, 'Witaj swiecie', 'Polish')
-]
+];

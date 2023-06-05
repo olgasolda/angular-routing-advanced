@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {PhraseInterface} from "./phrase.interface";
-import {PHRASES} from "./mock-data";
+import {PhraseInterface} from "../types/phrase.interface";
+import {PHRASES} from "../mock/mock-data";
 
 const phrasesPromise: Promise<PhraseInterface[]> = Promise.resolve(PHRASES);
 

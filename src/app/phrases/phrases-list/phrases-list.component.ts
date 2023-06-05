@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PhraseInterface} from "../../shared/phrase.interface";
-import {PhrasesService} from "../../shared/phrases.service";
+import {PhraseInterface} from "../../shared/types/phrase.interface";
+import {PhrasesService} from "../../shared/services/phrases.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
